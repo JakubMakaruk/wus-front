@@ -1,0 +1,6 @@
+<mat-nav-list>
+  <h2>{{ category }}</h2>
+  <a mat-list-item (click)="selectProducts(gender, category, link.key)" *ngFor="let link of sideNavItems | uniqueCategory" >
+    {{ link.text }}
+  </a>
+</mat-nav-list>

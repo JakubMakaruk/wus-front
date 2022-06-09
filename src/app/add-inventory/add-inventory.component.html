@@ -1,0 +1,39 @@
+<app-admin-navbar></app-admin-navbar>
+
+<form [formGroup]="inventoryForm"
+      class="add-inventory__form">
+  <div class="add-inventory__form__product">
+    <mat-form-field>
+      <mat-label>Product</mat-label>
+      <mat-select [formControlName]="'product'"
+          (selectionChange)="changeProduct($event.value)">
+        <mat-option *ngFor="let product of products" [value]="product">{{ product.id }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <div *ngIf="product"
+        class="add-inventory__form__product--details">
+      <img src="{{ product.covers[0] }}" alt="">
+      <p class="add-inventory__form__product--details__title">{{ product.title }}</p>
+      <p class="add-inventory__form__product--details__category">{{ product.productType | capitalizeFirstLetter }}</p>
+    </div>
+  </div>
+
+
+  <div class="add-inventory__form__fields">
+    <mat-form-field class="auth__form__field">
+      <input #size matInput placeholder="Size" formControlName="size" maxlength="3"
+             (input)="size.value = size.value.toUpperCase()">
+      <mat-hint>(XS, S, M, L, XL)</mat-hint>
+    </mat-form-field>
+    <mat-form-field class="auth__form__field">
+      <input matInput placeholder="Quantity" formControlName="quantity" type="number">
+    </mat-form-field>
+    <button mat-raised-button
+            (click)="onSubmit()"
+            [disabled]="inventoryForm.invalid"
+            class="add-inventory__form__fields__button">Create</button>
+  </div>
+</form>
+
+

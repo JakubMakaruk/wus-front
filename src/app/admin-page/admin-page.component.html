@@ -1,0 +1,23 @@
+<app-admin-navbar></app-admin-navbar>
+
+<h1>ADMIN PANEL</h1>
+
+<div class="admin-page">
+  <div class="admin-page__setting-card"
+      (click)="navigateToAddProduct()">
+    <fa-icon class="admin-page__setting-card__icon" [icon]="faTShirt"></fa-icon>
+    <p class="admin-page__setting-card__name">CREATE NEW PRODUCT</p>
+  </div>
+
+  <div class="admin-page__setting-card"
+       (click)="navigateToEditProduct()">
+    <fa-icon class="admin-page__setting-card__icon" [icon]="faPen"></fa-icon>
+    <p class="admin-page__setting-card__name">EDIT PRODUCT</p>
+  </div>
+
+  <div class="admin-page__setting-card"
+       (click)="navigateToAddInventory()">
+    <fa-icon class="admin-page__setting-card__icon" [icon]="faShop"></fa-icon>
+    <p class="admin-page__setting-card__name">ADD INVENTORY TO PRODUCT</p>
+  </div>
+</div>

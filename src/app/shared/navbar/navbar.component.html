@@ -1,0 +1,128 @@
+<mat-toolbar class="navbar">
+  <div class="navbar__logo">
+    <a href="#">
+      <span class="navbar__logo__text">WEAR<span class="text__color--second">US</span><span class="text__color--orange text__font--medium-size">.</span></span>
+    </a>
+  </div>
+
+  <div class="navbar__navigation">
+
+    <button mat-button [matMenuTriggerFor]="women">WOMEN</button>
+
+    <mat-menu #women="matMenu" yPosition="below">
+      <button mat-menu-item [matMenuTriggerFor]="womenClothing">Clothing</button>
+      <button mat-menu-item [matMenuTriggerFor]="womenShoes">Shoes</button>
+      <button mat-menu-item [matMenuTriggerFor]="womenAccessories">Accessories</button>
+    </mat-menu>
+
+    <mat-menu #womenClothing="matMenu">
+      <button *ngFor="let product of womenClothingArray"
+              mat-menu-item
+              (click)="selectProducts('women', 'clothing', product.key)">
+        {{ product.text }}
+      </button>
+    </mat-menu>
+    <mat-menu #womenShoes="matMenu" yPosition="below">
+      <button *ngFor="let product of womenShoesArray"
+              mat-menu-item
+              (click)="selectProducts('women', 'shoes', product.key)">
+        {{ product.text }}
+      </button>
+    </mat-menu>
+    <mat-menu #womenAccessories="matMenu" yPosition="below">
+      <button *ngFor="let product of womenAccessoriesArray"
+              mat-menu-item
+              (click)="selectProducts('women', 'accessories', product.key)">
+        {{ product.text }}
+      </button>
+    </mat-menu>
+
+    <button mat-button [matMenuTriggerFor]="men">MEN</button>
+    <mat-menu #men="matMenu" yPosition="below">
+      <button mat-menu-item [matMenuTriggerFor]="menClothing">Clothing</button>
+      <button mat-menu-item [matMenuTriggerFor]="menShoes">Shoes</button>
+      <button mat-menu-item [matMenuTriggerFor]="menAccessories">Accessories</button>
+    </mat-menu>
+    <mat-menu #menClothing="matMenu">
+      <button *ngFor="let product of menClothingArray"
+              mat-menu-item
+              (click)="selectProducts('men', 'clothing', product.key)">
+        {{ product.text }}
+      </button>
+    </mat-menu>
+    <mat-menu #menShoes="matMenu" yPosition="below">
+      <button *ngFor="let product of menShoesArray"
+              mat-menu-item
+              (click)="selectProducts('men', 'shoes', product.key)">
+        {{ product.text }}
+      </button>
+    </mat-menu>
+    <mat-menu #menAccessories="matMenu" yPosition="below">
+      <button *ngFor="let product of menAccessoriesArray"
+              mat-menu-item
+              (click)="selectProducts('men', 'accessories', product.key)">
+        {{ product.text }}
+      </button>
+    </mat-menu>
+
+    <button mat-button [matMenuTriggerFor]="kids">KIDS</button>
+    <mat-menu #kids="matMenu" yPosition="below">
+      <button mat-menu-item [matMenuTriggerFor]="kidsClothing">Clothing</button>
+      <button mat-menu-item [matMenuTriggerFor]="kidsShoes">Shoes</button>
+      <button mat-menu-item [matMenuTriggerFor]="kidsAccessories">Accessories</button>
+    </mat-menu>
+    <mat-menu #kidsClothing="matMenu">
+      <button *ngFor="let product of kidsClothingArray"
+              mat-menu-item
+              (click)="selectProducts('kids', 'clothing', product.key)">
+        {{ product.text }}
+      </button>
+    </mat-menu>
+    <mat-menu #kidsShoes="matMenu" yPosition="below">
+      <button *ngFor="let product of kidsShoesArray"
+              mat-menu-item
+              (click)="selectProducts('kids', 'shoes', product.key)">
+        {{ product.text }}
+      </button>
+    </mat-menu>
+    <mat-menu #kidsAccessories="matMenu" yPosition="below">
+      <button *ngFor="let product of kidsAccessoriesArray"
+              mat-menu-item
+              (click)="selectProducts('kids', 'accessories', product.key)">
+        {{ product.text }}
+      </button>
+    </mat-menu>
+
+    <button mat-button color="warn">SALE</button>
+
+  </div>
+
+  <div class="navbar__account">
+    <div class="navbar__account__container">
+      <button *ngIf="userLogged" mat-icon-button aria-label="Example icon button with a vertical three dot icon"
+      (click)="navigateToAdminPanel()">
+        <mat-icon>settings</mat-icon>
+      </button>
+
+      <button mat-icon-button
+              [matMenuTriggerFor]="!userLogged ? login : register"
+              aria-label="Example icon button with a vertical three dot icon">
+        <mat-icon>person</mat-icon>
+      </button>
+
+      <button *ngIf="userLogged" mat-icon-button aria-label="Example icon button with a vertical three dot icon">
+        <mat-icon>shopping_cart</mat-icon>
+      </button>
+    </div>
+
+    <mat-menu class="navbar__account__login-container" #login="matMenu" xPosition="before">
+      <button mat-menu-item (click)="openDialog()">Login</button>
+      <p><a href="#">Register now</a> - It only takes a minute.</p>
+    </mat-menu>
+
+    <mat-menu class="navbar__account__login-container" #register="matMenu" xPosition="before">
+      <button mat-menu-item (click)="navigateToUserDetails()">My account</button>
+      <button mat-menu-item (click)="logout()">Logout</button>
+    </mat-menu>
+  </div>
+</mat-toolbar>

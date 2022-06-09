@@ -1,0 +1,50 @@
+@import "src/styles";
+
+.add-inventory__form {
+  margin: 40px auto;
+  width: 50%;
+
+  display: flex;
+  flex-direction: row;
+  gap: 100px;
+
+  &__product {
+    width: 70%;
+
+    mat-form-field {
+      width: 100%;
+    }
+
+    &--details {
+      width: 100%;
+
+      img {
+        width: 100%;
+        max-height: calc(100vh - 350px);
+      }
+    }
+  }
+
+  &__fields {
+    margin-top: 60px;
+    height: 80%;
+
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    &__button {
+      width: 100%;
+      height: 60px;
+      margin: 10px auto;
+      font-size: 18px;
+      color: #fff;
+      background: $color-blue;
+
+      mat-form-field {
+        width: 100%;
+      }
+    }
+  }
+
+}

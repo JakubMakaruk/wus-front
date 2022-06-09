@@ -1,0 +1,89 @@
+@import "src/styles";
+
+.user-details {
+
+  width: 80%;
+  margin: 40px auto;
+  display: flex;
+  flex-direction: column;
+  gap: 100px;
+
+  h2 {
+    margin: 40px;
+  }
+
+  &__account {
+    width: 40%;
+    &__form {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      width: 100%;
+
+      &__button {
+        width: 40%;
+        height: 60px;
+        margin: 0 auto;
+        font-size: 18px;
+        color: #fff;
+        background: $color-blue;
+
+        mat-form-field {
+          width: 60%;
+        }
+      }
+    }
+  }
+
+  &__addresses {
+    margin-bottom: 40px;
+    &__container {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      gap: 30px;
+    }
+    &-card {
+      height: 200px;
+      width: 200px;
+      background: $base-background-color;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      border-radius: 40px;
+      transition: background .3s ease;
+      cursor: pointer;
+
+      -webkit-box-shadow: 0px 0px 20px -10px rgba(66, 68, 90, 1);
+      -moz-box-shadow: 0px 0px 20px -10px rgba(66, 68, 90, 1);
+      box-shadow: 0px 0px 20px -10px rgba(66, 68, 90, 1);
+
+      &__icon, &__name {
+        color: $base-text-color;
+      }
+      &__icon {
+        font-size: 40px;
+      }
+      &__name {
+        font-family: 'Oswald', sans-serif;
+        font-size: 18px;
+        font-weight: 700;
+      }
+      &__add:hover {
+        background: $color-blue-3;
+      }
+
+      &__item {
+        padding: 20px;
+
+        &__actions {
+          button {
+            margin: 5px;
+          }
+        }
+      }
+    }
+  }
+
+}

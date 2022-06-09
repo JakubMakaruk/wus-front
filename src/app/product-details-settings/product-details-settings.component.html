@@ -1,0 +1,50 @@
+<app-admin-navbar></app-admin-navbar>
+
+<form [formGroup]="productForm"
+      class="product-details__form">
+  <div class="product-details__form__product">
+    <mat-form-field>
+      <mat-label>Product</mat-label>
+
+      <mat-select (selectionChange)="changeProduct($event.value)">
+        <mat-option *ngFor="let product of products" [value]="product">{{ product.id }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <div *ngIf="selectedProduct"
+         class="product-details__form__product--details">
+      <img src="{{ selectedProduct.covers[0] }}" alt="">
+    </div>
+  </div>
+
+
+  <div class="product-details__form__fields" *ngIf="selectedProduct">
+    <mat-form-field class="auth__form__field">
+      <input matInput placeholder="Title" formControlName="title">
+    </mat-form-field>
+    <mat-form-field class="auth__form__field">
+    <textarea matInput
+              cdkTextareaAutosize
+              #autosize="cdkTextareaAutosize"
+              cdkAutosizeMinRows="1"
+              cdkAutosizeMaxRows="5"
+              placeholder="Description"
+              formControlName="description"></textarea>
+    </mat-form-field>
+    <mat-form-field class="auth__form__field">
+      <input matInput placeholder="Brand" formControlName="brand">
+    </mat-form-field>
+    <mat-form-field class="auth__form__field">
+      <input matInput placeholder="Price" formControlName="price" type="number">
+    </mat-form-field>
+    <mat-form-field class="auth__form__field">
+      <input matInput placeholder="Cover" formControlName="covers">
+    </mat-form-field>
+
+    <button mat-raised-button
+            (click)="onSubmit()"
+            class="product-details__form__button">Save</button>
+  </div>
+</form>
+
+

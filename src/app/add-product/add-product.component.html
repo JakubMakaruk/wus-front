@@ -1,0 +1,41 @@
+<app-admin-navbar></app-admin-navbar>
+
+<form [formGroup]="productForm"
+  class="add-product__form">
+  <mat-form-field>
+    <mat-label>Category</mat-label>
+    <mat-select [formControlName]="'category'">
+      <mat-option *ngFor="let category of categories" [value]="category">{{ category.gender | capitalizeFirstLetter}} - {{ category.key | capitalizeFirstLetter}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field class="auth__form__field">
+    <input matInput placeholder="Title" formControlName="title">
+  </mat-form-field>
+  <mat-form-field class="auth__form__field">
+    <textarea matInput
+              cdkTextareaAutosize
+              #autosize="cdkTextareaAutosize"
+              cdkAutosizeMinRows="1"
+              cdkAutosizeMaxRows="5"
+              placeholder="Description"
+              formControlName="description"></textarea>
+  </mat-form-field>
+
+  <div class="add-product__form--small-sections">
+    <mat-form-field class="auth__form__field">
+      <input matInput placeholder="Brand" formControlName="brand">
+    </mat-form-field>
+    <mat-form-field class="auth__form__field">
+      <input matInput placeholder="Price" formControlName="price" type="number">
+    </mat-form-field>
+  </div>
+
+  <mat-form-field class="auth__form__field">
+    <input matInput placeholder="Cover" formControlName="covers">
+  </mat-form-field>
+
+  <button mat-raised-button
+          (click)="onSubmit()"
+          [disabled]="productForm.invalid"
+          class="add-product__form__button">Create</button>
+</form>

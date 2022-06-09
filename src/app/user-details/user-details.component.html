@@ -1,0 +1,45 @@
+<app-navbar class="navbar-forward"></app-navbar>
+
+<div class="user-details">
+  <div class="user-details__account">
+    <h2>My account</h2>
+    <form [formGroup]="userForm"
+          class="user-details__account__form">
+
+        <mat-form-field class="auth__form__field">
+          <input matInput placeholder="Firstname" formControlName="firstname">
+        </mat-form-field>
+        <mat-form-field class="auth__form__field">
+          <input matInput placeholder="Lastname" formControlName="lastname">
+        </mat-form-field>
+        <mat-form-field class="auth__form__field">
+          <input matInput placeholder="Phone" formControlName="phone">
+        </mat-form-field>
+
+        <button mat-raised-button
+                (click)="onSubmit()"
+                class="user-details__account__form__button">Save</button>
+    </form>
+  </div>
+  <div class="user-details__addresses">
+    <h2>My addresses</h2>
+    <div class="user-details__addresses__container">
+      <div class="user-details__addresses-card user-details__addresses-card__add"
+           (click)="addNewAddress()">
+        <fa-icon class="user-details__addresses-card__icon" [icon]="faPlus"></fa-icon>
+        <p class="user-details__addresses-card__name">ADD NEW ADDRESS</p>
+      </div>
+      <div class="user-details__addresses-card user-details__addresses-card__item"
+        *ngFor="let address of userValue.addresses">
+
+        <p>{{ address.street }}  {{ address.houseNumber }} <span *ngIf="address.flatNumber">/{{ address.flatNumber}}</span> </p>
+        <p>{{ address.postCode}} {{ address.city}}</p>
+
+        <div class="user-details__addresses-card__item__actions">
+          <button mat-button color="warn" (click)="deleteAddress(address.id)">DELETE</button>
+          <button mat-button color="primary" (click)="editAddress(address)">EDIT</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

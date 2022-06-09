@@ -1,0 +1,13 @@
+.edit-address {
+  &__form {
+    display: flex;
+    flex-direction: column;
+
+  }
+
+  &__actions {
+    display: flex;
+    justify-content: space-between;
+    gap: 5px;
+  }
+}

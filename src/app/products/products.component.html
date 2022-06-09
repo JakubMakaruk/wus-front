@@ -1,0 +1,15 @@
+<div class="products__container">
+  <div *ngFor="let product of products"
+    class="products__item">
+    <div class="products__item__image"
+         (click)="navigateToDetails(product.id)">
+      <img src="{{ product.covers[0] }}" alt="">
+    </div>
+    <div class="products__item__actions">
+      <p class="products__item__actions--title">{{ product.title }}</p>
+      <p class="products__item__actions--category">{{ product.productKey }}</p>
+      <p class="products__item__actions--brand">{{ product.brand ? product.brand : 'marka' }}</p>
+      <p class="products__item__actions--price">${{ product.price }}</p>
+    </div>
+  </div>
+</div>

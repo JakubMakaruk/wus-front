@@ -1,0 +1,46 @@
+@import "src/styles";
+
+.product-details__form {
+  margin: 40px auto;
+  width: 60%;
+
+  display: flex;
+  flex-direction: row;
+  gap: 60px;
+
+  &__product {
+    width: 60%;
+
+    mat-form-field {
+      width: 100%;
+    }
+
+    &--details {
+      width: 100%;
+
+      img {
+        width: 100%;
+        max-height: calc(100vh - 350px);
+      }
+    }
+  }
+
+  &__fields {
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+  }
+
+  &__button {
+    width: 50%;
+    height: 60px;
+    margin: 0 auto;
+    font-size: 18px;
+    color: #fff;
+    background: $color-blue;
+
+    mat-form-field {
+      width: 50%;
+    }
+  }
+}

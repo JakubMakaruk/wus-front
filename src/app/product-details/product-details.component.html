@@ -1,0 +1,34 @@
+<div class="product-page">
+  <app-navbar class="navbar-forward"></app-navbar>
+
+  <div class="product-details">
+    <div class="product-details__image-container">
+      <img src="{{ product.covers[0] }}" alt="">
+    </div>
+    <div class="product-details__actions">
+      <div class="product-details__actions__specification">
+        <p class="product-details__actions__specification--title">{{ product.title }}</p>
+        <p class="product-details__actions__specification--category">Category: {{ product.productKey }}</p>
+        <p class="product-details__actions__specification--brand">Brand: {{ product.brand ? product.brand : 'marka' }}</p>
+        <p class="product-details__actions__specification--description">Description: {{ product.description }}</p>
+
+        <mat-button-toggle-group class="product-details__actions__specification--toggle-group" name="fontStyle" aria-label="Font Style">
+          <mat-button-toggle *ngFor="let inventory of product.inventory"
+          [disabled]="inventory.quantity <= 0"
+          value="{{ inventory.size }}">{{ inventory.size }}
+          </mat-button-toggle>
+        </mat-button-toggle-group>
+
+        <mat-form-field class="product-details__actions__specification--form-field">
+          <mat-label>Quantity</mat-label>
+          <input matInput type="text">
+        </mat-form-field>
+      </div>
+
+
+      <button mat-raised-button class="product-details__actions__button"
+              color="warn"
+              (click)="onSubmit()"><mat-icon>add_shopping_cart</mat-icon> Add to cart</button>
+    </div>
+  </div>
+</div>
